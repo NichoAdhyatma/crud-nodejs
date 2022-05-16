@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        form,
+        h1 {
+            margin-left: 30px;
+        }
+        
+        .btn2 {
+            margin-left: 25px;
+            margin-top: 20px;
+        }
+    </style>
+    <title>Update</title>
+</head>
+
+<body>
+    <h1>
+        <%= hero.title %>
+    </h1>
+    <br>
+    <form action="/hero/update" method="post">
+        <input type="hidden" name="id" value="<%= hero.data[0].id%>">
+        <input type="text" name="name" value="<%= hero.data[0].name %>" />
+        <br><br>
+        <input type="text" name="role" value="<%= hero.data[0].role %>">
+        <br><br>
+        <input onclick="myFunction()" class="btn btn-success" type="submit" value="update">
+    </form>
+    <a href="/hero"><button class="btn2 btn btn-outline-primary">Kembali</button></a>
+    <script>
+        function myFunction() {
+            confirm("Apakah anda ingin update data ?");
+        }
+    </script>
+</body>
+
+</html>

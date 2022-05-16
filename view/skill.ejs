@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .cont {
+            display: flex;
+            align-items: center;
+        }
+        
+        .home {
+            margin-left: 30px;
+        }
+        
+        h1 {
+            margin: 0 auto;
+        }
+        
+        th,
+        td {
+            text-align: center;
+        }
+        
+        h3,
+        form {
+            margin-left: 30px;
+        }
+    </style>
+    <title>Skill</title>
+</head>
+
+<body>
+    <div class="cont">
+        <a href="/"><button class=" home btn btn-primary">Home</button></a>
+        <h1>
+            <%= skills.title %>
+        </h1>
+    </div>
+    <div class="container-fluid">
+        <table class="table table-sm">
+            <thead class="thead-dark">
+                <br/>
+                <th>id</th>
+                <th>name</th>
+                <th>hero</th>
+                <th>damage</th>
+                <th>action</th>
+            </thead>
+            <% for (let i = 0; i < skills.data.length; i++) { %>
+                <tr>
+                    <td>
+                        <%= i + 1 %>
+                    </td>
+                    <td>
+                        <%= skills.data[i].name %>
+                    </td>
+                    <td>
+                        <%= skills.data[i].hero %>
+                    </td>
+                    <td>
+                        <%= skills.data[i].damage %>
+                    </td>
+                    <form action="/skill/remove" method="post">
+                        <td>
+                            <a href="/skill/<%= skills.data[i].id %>"><button type="button" class="btn btn-primary">Edit</button></a>
+                            <input type="text" hidden name="id" value="<%= skills.data[i].id %>" />
+                            <button onclick="Delete()" type="submit" class="btn btn-danger">Delete</button>
+                        </td>
+                    </form>
+                </tr>
+                <% } %>
+        </table>
+    </div>
+    <h3>TAMBAHKAN SKILL</h3>
+    <form action="/skill/add" method="post">
+        <input type="text" name="name" placeholder="isi nama skill" />
+        <input type="text" name="hero" placeholder="isi nama hero" />
+        <input type="text" name="damage" placeholder="isi damage" />
+        <br/>
+        <br/>
+        <input onclick="Add()" class="btn btn-primary" type="submit" value="tambahkan">
+    </form>
+    <script>
+        function Add() {
+            confirm("Apakah anda ingin menambah data hero ?");
+        }
+
+        function Delete() {
+            confirm("Apakah anda ingin menghapus data hero ?");
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+
+</body>
+
+</html>
